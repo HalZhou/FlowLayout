@@ -10,12 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/flowLayout"
+        android:padding="10dp"
         >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:maxWidth="200dp"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textColor="@color/colorAccent"
             android:background="@drawable/bg_corner"
             android:text="测试第一个测试第一个测-->试第一个测试第一个测试第一个"/>

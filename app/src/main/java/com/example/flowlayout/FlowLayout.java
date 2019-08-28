@@ -1,6 +1,7 @@
 package com.example.flowlayout;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
@@ -12,7 +13,7 @@ import java.util.List;
 public class FlowLayout extends ViewGroup {
 
     //上下左右padding
-    private final int PADDING = dp2px(15);
+    private int PADDING = dp2px(15);
     //子View的间隔
     private final int ITEM_INVTERVAL = dp2px(10);
     //行间隔；
@@ -34,6 +35,8 @@ public class FlowLayout extends ViewGroup {
 
     public FlowLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+
+        PADDING = getPaddingTop();
     }
 
     @Override
@@ -63,10 +66,15 @@ public class FlowLayout extends ViewGroup {
             int temp = currWidth + PADDING + childWidth;
             if (temp > maxWidth) {
                 //说明当前行放不下当前子View
-                //换行
-                currWidth = childWidth;
-                currLine++;
-                isTurn = true;
+                //判断是否是第一个子View
+                if (i == 0){
+                    currWidth = childWidth;
+                }else {
+                    //换行
+                    currWidth = childWidth;
+                    currLine++;
+                    isTurn = true;
+                }
 
                 //新增一行
                 addLine(childView);

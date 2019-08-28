@@ -3,6 +3,7 @@ package com.example.flowlayout;
 import android.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = new TextView(this);
         ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         textView.setLayoutParams(lp);
-        textView.setMaxWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,200,getResources().getDisplayMetrics()));
+        textView.setMaxLines(1);
+        textView.setEllipsize(TextUtils.TruncateAt.END);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
         textView.setBackgroundResource(R.drawable.bg_corner);
 
